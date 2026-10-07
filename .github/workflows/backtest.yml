@@ -1,0 +1,29 @@
+name: Backtest BOS CHoCH
+
+on:
+  workflow_dispatch:
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install yfinance pandas
+
+      - name: Uruchom backtest
+        run: |
+          python backtest.py | tee wyniki.txt
+          echo '### Wyniki backtestu' >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          cat wyniki.txt >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wyniki_backtestu
+          path: wyniki_backtestu.csv
