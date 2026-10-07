@@ -1,9 +1,15 @@
+import pandas as pd
+import yfinance as yf
+
 TICKERS = ["AAPL", "TSLA", "NVDA", "AMD", "MSFT", "META", "AMZN"]
 INTERVALS = {"1m": "7d", "5m": "60d", "15m": "60d", "1h": "730d"}
 PIVOT_LEN = 5
 RR = 2.0
 MAX_BARS = 50
-COST_R = 0.05def bullish_signals(df, length):
+COST_R = 0.05
+
+
+def bullish_signals(df, length):
     high, low, close = df["High"].values, df["Low"].values, df["Close"].values
     last_high = last_low = None
     high_broken = low_broken = False
@@ -74,6 +80,7 @@ def load(ticker, interval, period):
     df = yf.download(ticker, period=period, interval=interval,
                      progress=False, auto_adjust=False)
     if df is None or df.empty:
+        print("Brak danych:", ticker, interval)
         return None
     if df.columns.nlevels > 1:
         df.columns = df.columns.get_level_values(0)
@@ -100,5 +107,4 @@ if __name__ == "__main__":
     result = pd.DataFrame(rows)
     pd.set_option("display.width", 200)
     print(result.to_string(index=False))
-    result.to_csv("wyniki_backtestu.csv", index=False)
     print("\nUwaga: srednio R ponizej 0 oznacza, ze strategia traciła na tych danych.")
