@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/runner/work/skaner/skaner/backtest.py", line 80, in <module>
+    for interval, period in INTERVALS.items():
+                            ^^^^^^^^^
+NameError: name 'INTERVALS' is not defined
