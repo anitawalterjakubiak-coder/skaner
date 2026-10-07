@@ -1,14 +1,3 @@
-import pandas as pd
-import yfinance as yf
-
-TICKERS = ["AAPL", "TSLA", "NVDA", "AMD", "MSFT", "META", "AMZN"]
-INTERVALS = {"1m": "7d", "5m": "60d", "15m": "60d", "1h": "730d"}
-PIVOT_LEN = 5
-RR = 2.0
-MAX_BARS = 50
-COST_R = 0.05
-
-
 def bullish_signals(df, length):
     high, low, close = df["High"].values, df["Low"].values, df["Close"].values
     last_high = last_low = None
