@@ -17,13 +17,15 @@ jobs:
 
       - name: Uruchom backtest
         run: |
-          python backtest.py | tee wyniki.txt
+          python backtest.py > wyniki.txt 2>&1 || true
           echo '### Wyniki backtestu' >> "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"
           cat wyniki.txt >> "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"
 
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: wyniki_backtestu
           path: wyniki_backtestu.csv
+          if-no-files-found: ignore
