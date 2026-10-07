@@ -1,5 +1,35 @@
-Traceback (most recent call last):
-  File "/home/runner/work/skaner/skaner/backtest.py", line 80, in <module>
-    for interval, period in INTERVALS.items():
-                            ^^^^^^^^^
-NameError: name 'INTERVALS' is not defined
+interwal spolka  transakcje  % zyskownych  srednio R  suma R  max spadek (R)
+      1m   AAPL          35          34.3     -0.213    -7.5             8.4
+      1m   TSLA          40          42.5      0.088     3.5             9.1
+      1m   NVDA          34          26.5     -0.255    -8.7             8.2
+      1m    AMD          38          31.6     -0.227    -8.6             9.6
+      1m   MSFT          39          33.3     -0.146    -5.7            10.6
+      1m   META          39          28.2     -0.302   -11.8            14.4
+      1m   AMZN          36          52.8      0.115     4.1             6.5
+      1m  RAZEM         261          35.6     -0.133   -34.6            46.6
+      5m   AAPL          71          49.3      0.281    19.9             4.2
+      5m   TSLA          64          42.2      0.046     3.0             7.1
+      5m   NVDA          66          39.4      0.026     1.7             7.0
+      5m    AMD          68          41.2      0.030     2.1            11.8
+      5m   MSFT          67          38.8     -0.081    -5.4            15.5
+      5m   META          76          39.5     -0.066    -5.0             9.7
+      5m   AMZN          74          29.7     -0.323   -23.9            27.8
+      5m  RAZEM         486          39.9     -0.016    -7.7            43.1
+     15m   AAPL          24          66.7      0.454    10.9             3.1
+     15m   TSLA          21          28.6     -0.361    -7.6             8.2
+     15m   NVDA          19          42.1     -0.048    -0.9             3.7
+     15m    AMD          18          50.0      0.216     3.9             3.2
+     15m   MSFT          22          54.5      0.444     9.8             1.0
+     15m   META          22          54.5      0.438     9.6             2.0
+     15m   AMZN          21          38.1     -0.266    -5.6             7.4
+     15m  RAZEM         147          48.3      0.137    20.1            11.2
+      1h   AAPL          75          48.0      0.161    12.1             7.1
+      1h   TSLA          38          36.8      0.009     0.3             7.7
+      1h   NVDA          60          41.7     -0.021    -1.2            11.7
+      1h    AMD          37          43.2      0.141     5.2             8.2
+      1h   MSFT          64          57.8      0.285    18.2             3.8
+      1h   META          59          42.4      0.049     2.9             6.3
+      1h   AMZN          65          44.6     -0.121    -7.9            11.2
+      1h  RAZEM         398          45.7      0.074    29.6            16.7
+
+Uwaga: srednio R ponizej 0 oznacza, ze strategia traciła na tych danych.
