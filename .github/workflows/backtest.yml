@@ -3,6 +3,9 @@ name: Backtest BOS CHoCH
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   backtest:
     runs-on: ubuntu-latest
@@ -16,16 +19,12 @@ jobs:
       - run: pip install yfinance pandas
 
       - name: Uruchom backtest
-        run: |
-          python backtest.py > wyniki.txt 2>&1 || true
-          echo '### Wyniki backtestu' >> "$GITHUB_STEP_SUMMARY"
-          echo '```' >> "$GITHUB_STEP_SUMMARY"
-          cat wyniki.txt >> "$GITHUB_STEP_SUMMARY"
-          echo '```' >> "$GITHUB_STEP_SUMMARY"
+        run: python backtest.py > wyniki.txt 2>&1 || true
 
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: wyniki_backtestu
-          path: wyniki_backtestu.csv
-          if-no-files-found: ignore
+      - name: Zapisz wyniki w repozytorium
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add wyniki.txt
+          git commit -m "Wyniki backtestu" || echo "brak zmian"
+          git push
